@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f3f5f7">
+<title>海鲸 MY｜广州车展调研</title>
+<style>
+:root{--bg:#f3f5f7;--card:#ffffff;--ink:#202a35;--muted:#818b96;--line:#e6e9ed;--blue:#536f85;--blue2:#edf1f4;--violet:#777487;--radius:20px}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:16px 15px 46px}
+header{position:relative;overflow:hidden;border-radius:23px;padding:29px 24px 23px;color:#f4f6f8;background:#192d3d;box-shadow:0 8px 24px rgba(25,43,58,.08)}header:after{content:"";position:absolute;left:24px;right:24px;top:0;height:1px;background:rgba(210,222,230,.42)}
+.heroart{display:none}.eyebrow{position:relative;z-index:1;font-size:10px;letter-spacing:.2em;color:#b8c3cc;font-weight:650}.hero-title{position:relative;z-index:1;font-size:29px;letter-spacing:-.045em;margin:17px 0 8px;font-weight:720}.hero-sub{position:relative;z-index:1;color:#c4cdd4;font-size:13px;line-height:1.75;max-width:390px}.ipline{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;margin-top:15px;padding:0;border:0;border-radius:0;color:#d6dce1;font-size:11px;letter-spacing:.08em;background:transparent}.ipdot{width:4px;height:4px;border-radius:50%;background:#aab9c4}
+.progressbox{position:relative;z-index:1;margin-top:22px}.progressmeta{display:flex;justify-content:space-between;font-size:11px;color:#c3d2e0;margin-bottom:8px}.progress{height:4px;background:rgba(230,240,250,.17);border-radius:10px;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,#a8bac6,#d1d7dc);transition:width .25s}
+.intro{padding:16px 5px 5px;color:#7e8994;font-size:12px;line-height:1.65}.card{position:relative;background:#fff;border:1px solid #e8ebef;border-radius:var(--radius);padding:21px 19px;margin:12px 0;box-shadow:0 3px 14px rgba(30,43,54,.025)}.card:before{content:none}
+.qhead{display:flex;gap:12px;align-items:flex-start}.num{width:29px;height:29px;flex:0 0 29px;border-radius:9px;background:#f0f2f4;color:#61717e;display:grid;place-items:center;font-size:11px;font-weight:700;letter-spacing:.03em}h2{font-size:16px;line-height:1.5;margin:1px 0 5px;font-weight:690;color:#203349}.hint{font-size:11px;color:#8a98a8;line-height:1.5}
+.value{margin:16px 0 9px;padding:11px 13px;border-radius:12px;background:#f5f7f8;font-size:14px;font-weight:620;color:#435463;line-height:1.45;min-height:45px;display:flex;align-items:center}
+.range-wrap{padding:0 9px}
+input[type=range]{display:block;width:100%;accent-color:var(--blue);height:27px;cursor:pointer;margin:0}
+.scale{display:grid;grid-template-columns:repeat(var(--steps),minmax(0,1fr));color:#8998a8;font-size:9px;margin:5px 9px 0;gap:0}
+.scale span{text-align:center;line-height:1.35;min-width:0}
+.pills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:16px}
+.pill{width:100%;min-height:42px;border:1px solid var(--line);background:#fff;color:#526276;padding:10px 11px;border-radius:999px;font-size:12px;line-height:1.35;cursor:pointer;transition:background .18s,border-color .18s,color .18s;display:flex;align-items:center;justify-content:center;text-align:center}
+.pill.selected{background:#edf2f5;border-color:#8198a9;color:#344b5c;font-weight:650}
+.colors{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:16px}
+.color{width:100%;min-height:48px;border:1px solid var(--line);border-radius:999px;padding:8px 14px;background:white;display:flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;transition:background .18s,border-color .18s,color .18s}
+.swatch{width:25px;height:25px;flex:0 0 25px;border-radius:50%;margin:0;position:relative;overflow:hidden;box-shadow:inset 0 0 0 1px #00000018,0 1px 3px #00000012}
+.swatch:after{content:"";position:absolute;inset:0;background:linear-gradient(145deg,rgba(255,255,255,.34),transparent 42%,rgba(0,0,0,.12))}
+.color strong{font-size:12px;font-weight:600;color:#34495f;white-space:nowrap}
+.color.selected{border:1.5px solid #718fa5;background:#f2f6f8;box-shadow:0 2px 8px rgba(70,117,154,.08)}
+
+.note{font-size:11px;color:#8795a5;line-height:1.65;margin:13px 3px 0}.actions{display:grid;grid-template-columns:1fr;gap:10px;margin-top:19px}button.primary{border:0;border-radius:15px;background:#30495b;color:white;padding:16px;font-size:15px;font-weight:680;cursor:pointer;box-shadow:0 7px 17px rgba(49,95,130,.2)}button.secondary{border:1px solid #dce5ed;background:#fff;color:#496078;border-radius:13px;padding:12px;font-size:13px;cursor:pointer}button:active,.pill:active,.color:active{transform:scale(.99)}
+.footer{font-size:10px;color:#9aa7b5;text-align:center;margin:21px 0}.success{display:none;text-align:center;padding:30px 20px}.success .check{width:56px;height:56px;border-radius:50%;background:#eaf3f7;color:#477fae;display:grid;place-items:center;font-size:27px;margin:0 auto 15px}.success h2{font-size:21px}.success p{font-size:13px;color:var(--muted);line-height:1.7}.admin{margin-top:24px;padding:17px;border:1px dashed #cbd7e2;border-radius:18px;background:rgba(255,255,255,.55)}.admin h3{font-size:13px;color:#40576d;margin:0 0 6px}.admin p{font-size:11px;color:#8795a5;line-height:1.6;margin:0 0 12px}.adminrow{display:flex;gap:8px;flex-wrap:wrap}.adminrow button{flex:1;min-width:130px}.count{font-variant-numeric:tabular-nums;color:#477fae;font-weight:750}
+@media(max-width:390px){.wrap{padding:10px 11px 35px}header{padding:23px 18px 19px}.hero-title{font-size:26px}.heroart{display:none}.card{padding:19px 15px}.scale{font-size:8px}}
+@media(min-width:600px){.wrap{padding-top:28px}.card{padding:24px 25px}.hero-title{font-size:35px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">BYD · MY · GUANGZHOU AUTO SHOW</div>
+  <h1 class="hero-title">海鲸 MY 用户调研</h1>
+  <div class="hero-sub">从深海生命，驶向星海未来。感谢您走近海鲸，分享对未来家庭出行的真实期待。</div>
+  <div class="ipline"><span class="ipdot"></span> 星海之鲸 · 拥抱万象，逍遥星海</div>
+  <div class="progressbox"><div class="progressmeta"><span>填写进度</span><span id="progressText">0 / 7</span></div><div class="progress"><div class="bar" id="bar"></div></div></div>
+</header>
+<div class="intro">本问卷约需 1–2 分钟。请结合现场实车体验作答，您的反馈将用于海鲸产品市场研究。</div>
+
+<main id="survey">
+<section class="card">
+ <div class="qhead"><div class="num">01</div><div><h2>您对海鲸整体外观设计的第一印象如何？</h2><div class="hint">请根据现场实车观感评分</div></div></div>
+ <div class="value" id="v1">请选择评分</div>
+ <div class="range-wrap"><input id="q1" type="range" min="1" max="5" step="1" value="3"></div>
+ <div class="scale" style="--steps:5"><span>1<br>非常不喜欢</span><span>2</span><span>3<br>一般</span><span>4</span><span>5<br>非常喜欢</span></div>
+</section>
+
+<section class="card">
+ <div class="qhead"><div class="num">02</div><div><h2>您对海鲸实车整体尺寸的感受如何？</h2><div class="hint">关注空间需求与日常使用便利性的平衡</div></div></div>
+ <div class="pills" data-options="q2">
+  <button class="pill" data-group="q2" data-index="0">尺寸偏小</button>
+  <button class="pill" data-group="q2" data-index="1">尺寸比较合适</button>
+  <button class="pill" data-group="q2" data-index="2">驾驶时感觉偏大</button>
+  <button class="pill" data-group="q2" data-index="3">停车时感觉偏大</button>
+  <button class="pill" data-group="q2" data-index="4">尺寸明显过大</button>
+  <button class="pill" data-group="q2" data-index="5">没有明显感受</button>
+ </div>
+</section>
+
+<section class="card">
+ <div class="qhead"><div class="num">03</div><div><h2>在现场展示的两款颜色中，您更喜欢哪一款？</h2></div></div>
+ <div class="colors">
+  <button class="color" data-group="q3" data-value="琉璃紫"><span class="swatch" style="background:radial-gradient(ellipse at 28% 20%,#a58eae 0%,#80688e 20%,#624b73 43%,#483653 68%,#30243d 100%)"></span><strong>琉璃紫</strong></button>
+  <button class="color" data-group="q3" data-value="鲸辉蓝"><span class="swatch" style="background:radial-gradient(ellipse at 28% 20%,#79a2bb 0%,#477d9e 22%,#285a79 46%,#193f5a 72%,#102b40 100%)"></span><strong>鲸辉蓝</strong></button>
+ </div>
+ <div class="pills">
+  <button class="pill" data-group="q3" data-value="两款都喜欢">两款都喜欢</button>
+  <button class="pill" data-group="q3" data-value="两款都不喜欢">两款都不喜欢</button>
+ </div>
+</section>
+
+<section class="card">
+ <div class="qhead"><div class="num">04</div><div><h2>您认为海鲸作为一款家用中大型 MPV，合理的整车售价应该是多少？</h2><div class="hint">请按您的直观判断选择，不代表实际售价</div></div></div>
+ <div class="value" id="v4">请选择价格区间</div>
+ <div class="range-wrap"><input id="q4" type="range" min="0" max="8" step="1" value="3"></div>
+ <div class="scale" style="--steps:9"><span>20万以下</span><span>20–22</span><span>22–24</span><span>24–26</span><span>26–28</span><span>28–30</span><span>30–35</span><span>35–40</span><span>40万以上</span></div>
+</section>
+
+<section class="card">
+ <div class="qhead"><div class="num">05</div><div><h2>您目前的年龄段是？</h2></div></div>
+ <div class="pills">
+  <button class="pill" data-group="q5" data-index="0">18–25岁</button><button class="pill" data-group="q5" data-index="1">26–30岁</button>
+  <button class="pill" data-group="q5" data-index="2">31–35岁</button><button class="pill" data-group="q5" data-index="3">36–40岁</button>
+  <button class="pill" data-group="q5" data-index="4">41–45岁</button><button class="pill" data-group="q5" data-index="5">46–50岁</button>
+  <button class="pill" data-group="q5" data-index="6">50岁以上</button>
+ </div>
+</section>
+
+<section class="card">
+ <div class="qhead"><div class="num">06</div><div><h2>您目前的家庭及用车情况是怎样的？</h2></div></div>
+ <div class="pills">
+  <button class="pill" data-group="q6" data-index="0">单身，主要个人使用</button><button class="pill" data-group="q6" data-index="1">已婚，暂无子女</button>
+  <button class="pill" data-group="q6" data-index="2">已婚，有1名子女</button><button class="pill" data-group="q6" data-index="3">已婚，有2名及以上子女</button>
+  <button class="pill" data-group="q6" data-index="4">与父母共同生活，多人出行</button><button class="pill" data-group="q6" data-index="5">其他</button>
+ </div>
+</section>
+
+<section class="card">
+ <div class="qhead"><div class="num">07</div><div><h2>您目前的购车计划及 MPV 消费需求属于哪种情况？</h2></div></div>
+ <div class="pills">
+  <button class="pill" data-group="q7" data-index="0">已有MPV，计划近期换购</button><button class="pill" data-group="q7" data-index="1">轿车/SUV换购MPV</button>
+  <button class="pill" data-group="q7" data-index="2">计划增购MPV</button><button class="pill" data-group="q7" data-index="3">未来1年内购车，车型未定</button>
+  <button class="pill" data-group="q7" data-index="4">未来1–3年有购车计划</button><button class="pill" data-group="q7" data-index="5">暂无计划，仅了解产品</button>
+ </div>
+</section>
+
+<div class="note">提交即表示您同意本次调研将记录上述匿名问卷答案。请勿填写姓名、电话等个人敏感信息。</div>
+<div class="actions"><button class="primary" id="submit">提交问卷</button></div>
+</main>
+
+<section class="card success" id="success">
+ <div class="check">✓</div><h2>感谢您的参与</h2>
+ <p>本次问卷已记录在当前设备的浏览器中。欢迎邀请下一位观众继续填写。</p>
+ <div class="actions"><button class="primary" id="next">继续填写下一份</button></div>
+</section>
+
+<section class="admin">
+ <h3>调研数据管理 <span class="count" id="recordCount">0</span></h3>
+ <p>本设备已保存的问卷记录。建议每天结束后导出 CSV 并备份。GitHub Pages 是静态网站，记录默认保存在填写设备本地，不会自动汇总到其他手机。</p>
+ <div class="adminrow">
+  <button class="secondary" id="export">导出全部记录 CSV</button>
+  <button class="secondary" id="backup">备份 JSON</button>
+ </div>
+</section>
+<div class="footer">星海之鲸 · 海鲸 MY · 广州车展市场调研</div>
+</div>
+<script>
+const labels={
+ q1:["非常不喜欢","不太喜欢","一般","比较喜欢","非常喜欢"],
+ q2:["尺寸偏小，希望车身更大、获得更充裕的空间","尺寸比较合适，空间与灵活性比较均衡","尺寸偏大，担心日常驾驶不够灵活","尺寸偏大，担心日常停车不方便","尺寸明显过大，影响日常使用","对尺寸没有明显感受"],
+ q4:["20万元以下","20–22万元","22–24万元","24–26万元","26–28万元","28–30万元","30–35万元","35–40万元","40万元以上"],
+ q5:["18–25岁","26–30岁","31–35岁","36–40岁","41–45岁","46–50岁","50岁以上"],
+ q6:["单身，主要个人使用","已婚，暂无子女","已婚，有1名子女","已婚，有2名及以上子女","与父母共同生活，有多人出行需求","其他"],
+ q7:["已有MPV，计划近期换购","目前驾驶轿车/SUV，计划换购MPV","目前驾驶轿车/SUV，有增购MPV计划","未来1年内有购车计划，但车型尚未确定","未来1–3年有购车计划","暂无购车计划，仅了解产品"]
+};
+const keys=["q1","q2","q3","q4","q5","q6","q7"];
+const answers={q3:""};
+const $=id=>document.getElementById(id);
+function update(){
+ ["q1","q4"].forEach(k=>{answers[k]=labels[k][Number($(k).value)];$("v"+k.slice(1)).textContent=answers[k]});
+ $("progressText").textContent=keys.filter(k=>answers[k]!==undefined&&answers[k]!=="").length+" / 7";
+ $("bar").style.width=(keys.filter(k=>answers[k]!==undefined&&answers[k]!=="").length/7*100)+"%";
+}
+["q1","q4"].forEach(k=>$(k).addEventListener("input",update));
+document.querySelectorAll("[data-group]").forEach(b=>b.addEventListener("click",()=>{
+ const group=b.dataset.group;
+ if(group==="q3"){answers.q3=b.dataset.value;}
+ else {answers[group]=labels[group][Number(b.dataset.index)];}
+ document.querySelectorAll("[data-group='"+group+"']").forEach(x=>x.classList.toggle("selected",x===b));
+ $("progressText").textContent=keys.filter(k=>answers[k]!==undefined&&answers[k]!=="").length+" / 7";
+ $("bar").style.width=(keys.filter(k=>answers[k]!==undefined&&answers[k]!=="").length/7*100)+"%";
+}));
+function getRecords(){try{return JSON.parse(localStorage.getItem("my_survey_records")||"[]")}catch(e){return []}}
+function setCount(){$("recordCount").textContent=getRecords().length}
+function csvCell(v){return '"'+String(v??"").replace(/"/g,'""')+'"'}
+$("submit").addEventListener("click",()=>{
+ if(!answers.q3){alert("请先选择您喜欢的颜色。");return}
+ const record={提交时间:new Date().toLocaleString("zh-CN",{hour12:false}),外观评价:answers.q1,尺寸感受:answers.q2,颜色偏好:answers.q3,合理价格:answers.q4,年龄段:answers.q5,家庭情况:answers.q6,购车计划:answers.q7};
+ const records=getRecords();records.push(record);
+ try{localStorage.setItem("my_survey_records",JSON.stringify(records))}
+ catch(e){alert("本设备存储空间不足，请先导出已有记录。");return}
+ $("survey").style.display="none";$("success").style.display="block";setCount();window.scrollTo({top:0,behavior:"smooth"});
+});
+$("next").addEventListener("click",()=>{
+ ["q1","q4"].forEach(k=>$(k).value=({q1:3,q4:3})[k]);
+ ["q2","q3","q5","q6","q7"].forEach(k=>{
+  answers[k]="";
+  document.querySelectorAll("[data-group='"+k+"']").forEach(x=>x.classList.remove("selected"));
+ });
+ update();$("success").style.display="none";$("survey").style.display="block";window.scrollTo({top:0,behavior:"smooth"});
+});
+function download(name,content,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+$("export").addEventListener("click",()=>{
+ const r=getRecords();if(!r.length){alert("当前还没有问卷记录。");return}
+ const cols=Object.keys(r[0]);const csv="\uFEFF"+[cols.map(csvCell).join(","),...r.map(x=>cols.map(c=>csvCell(x[c])).join(","))].join("\r\n");
+ download("海鲸MY_广州车展调研_"+new Date().toISOString().slice(0,10)+".csv",csv,"text/csv;charset=utf-8");
+});
+$("backup").addEventListener("click",()=>{const r=getRecords();if(!r.length){alert("当前还没有问卷记录。");return}download("海鲸MY_调研备份.json",JSON.stringify(r,null,2),"application/json")});
+update();setCount();
+</script>
+</body></html>
