@@ -160,7 +160,7 @@ input[type=range]:focus-visible{outline:2px solid #8da9bc;outline-offset:3px;bor
    <img id="prizeImage" width="1280" height="750" alt="" hidden>
    <div class="prize-placeholder" id="prizePlaceholder">
     <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="26" width="44" height="29" rx="4"/><rect x="7" y="17" width="50" height="11" rx="3"/><path d="M32 17v38M32 17c-14 0-19-4-16-10 4-7 15 0 16 10Zm0 0c14 0 19-4 16-10-4-7-15 0-16 10Z"/></svg>
-    <strong id="placeholderText">海鸥限定冰箱贴</strong><small id="placeholderNote">五款颜色 · 随机获得</small>
+    <strong id="placeholderText">海鸥限定冰箱贴</strong><small id="placeholderNote">车身保密要求，这次先派最活力多彩的海鸥给您鲸喜！</small>
    </div>
   </div>
   <div class="prize-palette" id="prizePalette" aria-hidden="true"><span style="background:#fff"></span><span style="background:#f2b9cb"></span><span style="background:#80c8e8"></span><span style="background:#84bca3"></span><span style="background:#303942"></span></div>
@@ -215,7 +215,7 @@ function showLottery(){
  $("lotteryTitle").textContent="感谢参与，开启惊喜";
  $("lotteryDesc").textContent="问卷已成功提交，五款海鸥冰箱贴随机抽取一款。";
  $("prizeImage").hidden=true;$("prizePlaceholder").hidden=false;
- $("placeholderText").textContent="海鸥限定冰箱贴";$("placeholderNote").textContent="五款颜色 · 随机获得";
+ $("placeholderText").textContent="海鸥限定冰箱贴";$("placeholderNote").textContent="车身保密要求，这次先派最活力多彩的海鸥给您鲸喜！";
  $("draw").hidden=false;$("draw").disabled=false;$("draw").textContent="开启抽奖";$("closeLottery").hidden=true;highlightPrize(-1);$("draw").focus();
 }
 function revealPrize(){
