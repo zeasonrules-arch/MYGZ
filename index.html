@@ -11,18 +11,28 @@
 .wrap{max-width:720px;margin:0 auto;padding:16px 15px 46px}
 header{position:relative;overflow:hidden;border-radius:23px;padding:29px 24px 23px;color:#f4f6f8;background:#192d3d;box-shadow:0 8px 24px rgba(25,43,58,.08)}header:after{content:"";position:absolute;left:24px;right:24px;top:0;height:1px;background:rgba(210,222,230,.42)}
 .heroart{display:none}.eyebrow{position:relative;z-index:1;font-size:10px;letter-spacing:.2em;color:#b8c3cc;font-weight:650}.hero-title{position:relative;z-index:1;font-size:29px;letter-spacing:-.045em;margin:17px 0 8px;font-weight:720}.hero-sub{position:relative;z-index:1;color:#c4cdd4;font-size:13px;line-height:1.75;max-width:390px}.ipline{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;margin-top:15px;padding:0;border:0;border-radius:0;color:#d6dce1;font-size:11px;letter-spacing:.08em;background:transparent}.ipdot{width:4px;height:4px;border-radius:50%;background:#aab9c4}
-.progressbox{position:relative;z-index:1;margin-top:22px}.progressmeta{display:flex;justify-content:space-between;font-size:11px;color:#c3d2e0;margin-bottom:8px}.progress{height:4px;background:rgba(230,240,250,.17);border-radius:10px;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,#a8bac6,#d1d7dc);transition:width .25s}
 .intro{padding:16px 5px 5px;color:#7e8994;font-size:12px;line-height:1.65}.card{position:relative;background:#fff;border:1px solid #e8ebef;border-radius:var(--radius);padding:21px 19px;margin:12px 0;box-shadow:0 3px 14px rgba(30,43,54,.025)}.card:before{content:none}
 .qhead{display:flex;gap:12px;align-items:flex-start}.num{width:29px;height:29px;flex:0 0 29px;border-radius:9px;background:#f0f2f4;color:#61717e;display:grid;place-items:center;font-size:11px;font-weight:700;letter-spacing:.03em}h2{font-size:16px;line-height:1.5;margin:1px 0 5px;font-weight:690;color:#203349}.hint{font-size:11px;color:#8a98a8;line-height:1.5}
 .value{margin:16px 0 9px;padding:11px 13px;border-radius:12px;background:#f5f7f8;font-size:14px;font-weight:620;color:#435463;line-height:1.45;min-height:45px;display:flex;align-items:center}
-.range-wrap{padding:0 9px}
-input[type=range]{display:block;width:100%;accent-color:var(--blue);height:27px;cursor:pointer;margin:0}
-.scale{display:grid;grid-template-columns:repeat(var(--steps),minmax(0,1fr));color:#8998a8;font-size:9px;margin:5px 9px 0;gap:0}
-.scale span{text-align:center;line-height:1.35;min-width:0}
-.pills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:16px}
+/* 滑块中心、轨道端点和刻度共用同一坐标系 */
+.range-wrap{--thumb:24px;position:relative;margin:0 20px;height:34px;display:flex;align-items:center}
+.range-track{position:absolute;left:12px;right:12px;height:7px;border-radius:99px;background:linear-gradient(to right,var(--blue) 0%,var(--blue) var(--fill,50%),#e3e6e9 var(--fill,50%),#e3e6e9 100%);pointer-events:none}
+input[type=range]{position:relative;display:block;width:100%;height:34px;margin:0;padding:0;appearance:none;-webkit-appearance:none;background:transparent;cursor:pointer;touch-action:pan-y}
+input[type=range]::-webkit-slider-runnable-track{height:24px;background:transparent;border:0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border:1px solid #dce2e6;border-radius:50%;background:#fff;box-shadow:0 1px 5px #26374626}
+input[type=range]::-moz-range-track{height:24px;background:transparent;border:0}
+input[type=range]::-moz-range-thumb{width:24px;height:24px;box-sizing:border-box;border:1px solid #dce2e6;border-radius:50%;background:#fff;box-shadow:0 1px 5px #26374626}
+input[type=range]:focus-visible{outline:2px solid #8da9bc;outline-offset:3px;border-radius:20px}
+.scale{position:relative;margin:1px 32px 0;height:35px;color:#8998a8;font-size:10px}
+.scale span{position:absolute;top:0;left:var(--pos);transform:translateX(-50%);text-align:center;line-height:1.35;white-space:nowrap;cursor:pointer;padding:2px 0}
+.scale span:before{content:"";display:block;width:1px;height:5px;background:#c8d0d7;margin:0 auto 4px}
+.scale span.active{color:#30495b;font-weight:700}.scale span.active:before{background:#536f85;width:2px}
+.scale.price{height:39px;font-size:9px}.scale.price span{white-space:normal;width:36px;overflow-wrap:normal}
+@media(max-width:420px){.range-wrap{margin-left:12px;margin-right:12px}.scale{margin-left:24px;margin-right:24px}.scale.price{height:47px;font-size:9px}.scale.price span{width:29px}.scale.price span:nth-child(even){top:17px}.scale.price span:nth-child(even):before{height:0;margin-bottom:0}}
+.pills{display:grid;grid-template-columns:minmax(0,1fr);gap:9px;margin-top:16px}
 .pill{width:100%;min-height:42px;border:1px solid var(--line);background:#fff;color:#526276;padding:10px 11px;border-radius:999px;font-size:12px;line-height:1.35;cursor:pointer;transition:background .18s,border-color .18s,color .18s;display:flex;align-items:center;justify-content:center;text-align:center}
 .pill.selected{background:#edf2f5;border-color:#8198a9;color:#344b5c;font-weight:650}
-.colors{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:16px}
+.colors{display:grid;grid-template-columns:minmax(0,1fr);gap:9px;margin-top:16px}
 .color{width:100%;min-height:48px;border:1px solid var(--line);border-radius:999px;padding:8px 14px;background:white;display:flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;transition:background .18s,border-color .18s,color .18s}
 .swatch{width:25px;height:25px;flex:0 0 25px;border-radius:50%;margin:0;position:relative;overflow:hidden;box-shadow:inset 0 0 0 1px #00000018,0 1px 3px #00000012}
 .swatch:after{content:"";position:absolute;inset:0;background:linear-gradient(145deg,rgba(255,255,255,.34),transparent 42%,rgba(0,0,0,.12))}
@@ -31,27 +41,33 @@ input[type=range]{display:block;width:100%;accent-color:var(--blue);height:27px;
 
 .note{font-size:11px;color:#8795a5;line-height:1.65;margin:13px 3px 0}.actions{display:grid;grid-template-columns:1fr;gap:10px;margin-top:19px}button.primary{border:0;border-radius:15px;background:#30495b;color:white;padding:16px;font-size:15px;font-weight:680;cursor:pointer;box-shadow:0 7px 17px rgba(49,95,130,.2)}button.secondary{border:1px solid #dce5ed;background:#fff;color:#496078;border-radius:13px;padding:12px;font-size:13px;cursor:pointer}button:active,.pill:active,.color:active{transform:scale(.99)}
 .footer{font-size:10px;color:#9aa7b5;text-align:center;margin:21px 0}.success{display:none;text-align:center;padding:30px 20px}.success .check{width:56px;height:56px;border-radius:50%;background:#eaf3f7;color:#477fae;display:grid;place-items:center;font-size:27px;margin:0 auto 15px}.success h2{font-size:21px}.success p{font-size:13px;color:var(--muted);line-height:1.7}.admin{margin-top:24px;padding:17px;border:1px dashed #cbd7e2;border-radius:18px;background:rgba(255,255,255,.55)}.admin h3{font-size:13px;color:#40576d;margin:0 0 6px}.admin p{font-size:11px;color:#8795a5;line-height:1.6;margin:0 0 12px}.adminrow{display:flex;gap:8px;flex-wrap:wrap}.adminrow button{flex:1;min-width:130px}.count{font-variant-numeric:tabular-nums;color:#477fae;font-weight:750}
-@media(max-width:390px){.wrap{padding:10px 11px 35px}header{padding:23px 18px 19px}.hero-title{font-size:26px}.heroart{display:none}.card{padding:19px 15px}.scale{font-size:8px}}
+@media(max-width:390px){.wrap{padding:10px 11px 35px}header{padding:23px 18px 19px}.hero-title{font-size:26px}.heroart{display:none}.card{padding:19px 15px}.scale:not(.price){font-size:9px}}
 @media(min-width:600px){.wrap{padding-top:28px}.card{padding:24px 25px}.hero-title{font-size:35px}}
+
+/* 抽奖弹窗 */
+[hidden]{display:none!important}.lottery{position:fixed;inset:0;z-index:100;background:#142738a6;display:grid;place-items:center;padding:20px;overflow:auto;overscroll-behavior:contain;backdrop-filter:blur(5px)}
+.lottery-panel{position:relative;width:min(100%,440px);max-height:calc(100dvh - 40px);overflow:auto;background:#fff;border:1px solid #e6ebef;border-radius:25px;padding:25px 22px 22px;text-align:center;box-shadow:0 20px 80px #14273845}
+.lottery-kicker{color:#778a99;font-size:11px;letter-spacing:.16em;font-weight:650;margin-bottom:10px}.lottery-panel h2{font-size:24px;margin:0 0 7px;letter-spacing:-.025em}.lottery-panel p{color:#72818e;font-size:13px;line-height:1.65;margin:0 0 16px}
+.prize-stage{position:relative;aspect-ratio:1280 / 750;overflow:hidden;border:1px solid #e5eaee;border-radius:15px;background:#f4f6f8;display:grid;place-items:center;margin:16px 0}.prize-stage img{display:block;width:100%;height:100%;object-fit:contain}.prize-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;width:100%;height:100%;color:#435b6d}.prize-placeholder svg{width:56px;height:56px}.prize-placeholder strong{font-size:18px}.prize-placeholder small{font-size:11px;color:#82909c}.prize-palette{display:flex;justify-content:center;gap:9px;margin:11px 0 18px}.prize-palette span{width:15px;height:15px;border-radius:50%;border:1px solid #0002;transition:transform .12s,box-shadow .12s}.prize-palette span.on{transform:scale(1.35);box-shadow:0 0 0 3px #dbe6ed}.lottery-panel .primary{width:100%}.lottery-panel button:disabled{opacity:.65;cursor:wait}.prize-summary{font-size:14px;font-weight:650;color:#30495b;margin:12px 0}.prize-summary button{margin-top:12px}.lottery-open{overflow:hidden}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
 <body>
 <div class="wrap">
 <header>
-  <div class="eyebrow">BYD · MY · GUANGZHOU AUTO SHOW</div>
+  <div class="eyebrow">比亚迪 · 广州车展</div>
   <h1 class="hero-title">海鲸 MY 用户调研</h1>
   <div class="hero-sub">从深海生命，驶向星海未来。感谢您走近海鲸，分享对未来家庭出行的真实期待。</div>
   <div class="ipline"><span class="ipdot"></span> 星海之鲸 · 拥抱万象，逍遥星海</div>
-  <div class="progressbox"><div class="progressmeta"><span>填写进度</span><span id="progressText">0 / 7</span></div><div class="progress"><div class="bar" id="bar"></div></div></div>
 </header>
 <div class="intro">本问卷约需 1–2 分钟。请结合现场实车体验作答，您的反馈将用于海鲸产品市场研究。</div>
 
 <main id="survey">
 <section class="card">
  <div class="qhead"><div class="num">01</div><div><h2>您对海鲸整体外观设计的第一印象如何？</h2><div class="hint">请根据现场实车观感评分</div></div></div>
- <div class="value" id="v1">请选择评分</div>
- <div class="range-wrap"><input id="q1" type="range" min="1" max="5" step="1" value="3"></div>
- <div class="scale" style="--steps:5"><span>1<br>非常不喜欢</span><span>2</span><span>3<br>一般</span><span>4</span><span>5<br>非常喜欢</span></div>
+ <div class="value" id="v1" aria-live="polite">3 · 一般</div>
+ <div class="range-wrap"><div class="range-track"></div><input aria-label="外观评价" id="q1" type="range" min="1" max="5" step="1" value="3"></div>
+ <div class="scale" data-scale="q1"><span>1<br>非常不喜欢</span><span>2</span><span>3<br>一般</span><span>4</span><span>5<br>非常喜欢</span></div>
 </section>
 
 <section class="card">
@@ -80,9 +96,9 @@ input[type=range]{display:block;width:100%;accent-color:var(--blue);height:27px;
 
 <section class="card">
  <div class="qhead"><div class="num">04</div><div><h2>您认为海鲸作为一款家用中大型 MPV，合理的整车售价应该是多少？</h2><div class="hint">请按您的直观判断选择，不代表实际售价</div></div></div>
- <div class="value" id="v4">请选择价格区间</div>
- <div class="range-wrap"><input id="q4" type="range" min="0" max="8" step="1" value="3"></div>
- <div class="scale" style="--steps:9"><span>20万以下</span><span>20–22</span><span>22–24</span><span>24–26</span><span>26–28</span><span>28–30</span><span>30–35</span><span>35–40</span><span>40万以上</span></div>
+ <div class="value" id="v4" aria-live="polite">24–26万元</div>
+ <div class="range-wrap"><div class="range-track"></div><input aria-label="合理售价" id="q4" type="range" min="0" max="8" step="1" value="3"></div>
+ <div class="scale price" data-scale="q4"><span>20万<br>以下</span><span>20–22</span><span>22–24</span><span>24–26</span><span>26–28</span><span>28–30</span><span>30–35</span><span>35–40</span><span>40万<br>以上</span></div>
 </section>
 
 <section class="card">
@@ -120,6 +136,7 @@ input[type=range]{display:block;width:100%;accent-color:var(--blue);height:27px;
 <section class="card success" id="success">
  <div class="check">✓</div><h2>感谢您的参与</h2>
  <p>本次问卷已记录在当前设备的浏览器中。欢迎邀请下一位观众继续填写。</p>
+ <div id="prizeSummary" class="prize-summary" hidden><div id="summaryText"></div><button class="secondary" id="viewPrize">查看中奖结果</button></div>
  <div class="actions"><button class="primary" id="next">继续填写下一份</button></div>
 </section>
 
@@ -132,6 +149,23 @@ input[type=range]{display:block;width:100%;accent-color:var(--blue);height:27px;
  </div>
 </section>
 <div class="footer">星海之鲸 · 海鲸 MY · 广州车展市场调研</div>
+</div>
+<div class="lottery" id="lottery" hidden role="dialog" aria-modal="true" aria-labelledby="lotteryTitle">
+ <div class="lottery-panel">
+  <div class="lottery-kicker">星海之鲸 · 车展专属礼遇</div>
+  <h2 id="lotteryTitle">感谢参与，开启惊喜</h2>
+  <p id="lotteryDesc">问卷已成功提交，五款海鲸冰箱贴随机抽取一款。</p>
+  <div class="prize-stage" id="prizeStage">
+   <img id="prizeImage" width="1280" height="750" alt="" hidden>
+   <div class="prize-placeholder" id="prizePlaceholder">
+    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="26" width="44" height="29" rx="4"/><rect x="7" y="17" width="50" height="11" rx="3"/><path d="M32 17v38M32 17c-14 0-19-4-16-10 4-7 15 0 16 10Zm0 0c14 0 19-4 16-10-4-7-15 0-16 10Z"/></svg>
+    <strong id="placeholderText">海鲸限定冰箱贴</strong><small id="placeholderNote">五款颜色 · 随机获得</small>
+   </div>
+  </div>
+  <div class="prize-palette" id="prizePalette" aria-hidden="true"><span style="background:#fff"></span><span style="background:#f2b9cb"></span><span style="background:#80c8e8"></span><span style="background:#84bca3"></span><span style="background:#303942"></span></div>
+  <button class="primary" id="draw">开启抽奖</button>
+  <button class="primary" id="closeLottery" hidden>确认中奖结果</button>
+ </div>
 </div>
 <script>
 const labels={
@@ -146,42 +180,95 @@ const keys=["q1","q2","q3","q4","q5","q6","q7"];
 const answers={q3:""};
 const $=id=>document.getElementById(id);
 function update(){
- ["q1","q4"].forEach(k=>{answers[k]=labels[k][Number($(k).value)];$("v"+k.slice(1)).textContent=answers[k]});
- $("progressText").textContent=keys.filter(k=>answers[k]!==undefined&&answers[k]!=="").length+" / 7";
- $("bar").style.width=(keys.filter(k=>answers[k]!==undefined&&answers[k]!=="").length/7*100)+"%";
+ ["q1","q4"].forEach(k=>{
+  const input=$(k), value=Number(input.value), min=Number(input.min), max=Number(input.max), index=value-min;
+  answers[k]=labels[k][index];
+  $("v"+k.slice(1)).textContent=k==="q1"?value+" · "+answers[k]:answers[k];
+  input.setAttribute("aria-valuetext",answers[k]);
+  input.parentElement.style.setProperty("--fill",(index/(max-min)*100)+"%");
+  document.querySelectorAll('[data-scale="'+k+'"] span').forEach((mark,i)=>mark.classList.toggle("active",i===index));
+ });
 }
-["q1","q4"].forEach(k=>$(k).addEventListener("input",update));
-document.querySelectorAll("[data-group]").forEach(b=>b.addEventListener("click",()=>{
- const group=b.dataset.group;
- if(group==="q3"){answers.q3=b.dataset.value;}
- else {answers[group]=labels[group][Number(b.dataset.index)];}
- document.querySelectorAll("[data-group='"+group+"']").forEach(x=>x.classList.toggle("selected",x===b));
- $("progressText").textContent=keys.filter(k=>answers[k]!==undefined&&answers[k]!=="").length+" / 7";
- $("bar").style.width=(keys.filter(k=>answers[k]!==undefined&&answers[k]!=="").length/7*100)+"%";
-}));
+["q1","q4"].forEach(k=>{
+ $(k).addEventListener("input",update);
+ const marks=[...document.querySelectorAll('[data-scale="'+k+'"] span')];
+ marks.forEach((mark,i)=>{
+  mark.style.setProperty("--pos",(i/(marks.length-1)*100)+"%");
+  mark.addEventListener("click",()=>{$(k).value=Number($(k).min)+i;update();});
+ });
+});
+document.querySelectorAll("[data-group]").forEach(b=>{
+ b.setAttribute("aria-pressed","false");
+ b.addEventListener("click",()=>{
+  const group=b.dataset.group;
+  answers[group]=group==="q3"?b.dataset.value:labels[group][Number(b.dataset.index)];
+  document.querySelectorAll("[data-group='"+group+"']").forEach(x=>{x.classList.toggle("selected",x===b);x.setAttribute("aria-pressed",String(x===b));});
+ });
+});
+const prizes=["白","粉","蓝","绿","黑"];
+let currentPrize=null, submitted=false, revealed=false, drawing=false;
+function highlightPrize(i){document.querySelectorAll("#prizePalette span").forEach((dot,index)=>dot.classList.toggle("on",index===i));}
+function showLottery(){
+ $("lottery").hidden=false;document.body.classList.add("lottery-open");
+ if(revealed){$("closeLottery").focus();return;}
+ $("lotteryTitle").textContent="感谢参与，开启惊喜";
+ $("lotteryDesc").textContent="问卷已成功提交，五款海鲸冰箱贴随机抽取一款。";
+ $("prizeImage").hidden=true;$("prizePlaceholder").hidden=false;
+ $("placeholderText").textContent="海鲸限定冰箱贴";$("placeholderNote").textContent="五款颜色 · 随机获得";
+ $("draw").hidden=false;$("draw").disabled=false;$("draw").textContent="开启抽奖";$("closeLottery").hidden=true;highlightPrize(-1);$("draw").focus();
+}
+function revealPrize(){
+ drawing=false;revealed=true;highlightPrize(prizes.indexOf(currentPrize));
+ $("lotteryTitle").textContent="恭喜您，抽中礼品！";
+ $("lotteryDesc").textContent="您获得了"+currentPrize+"色海鲸冰箱贴，请向现场工作人员出示本页面。";
+ $("placeholderText").textContent=currentPrize+"色海鲸冰箱贴";$("placeholderNote").textContent="图片暂未加载，以现场实物为准";
+ const img=$("prizeImage"), prize=currentPrize;
+ img.hidden=true;$("prizePlaceholder").hidden=false;
+ img.onload=()=>{if(currentPrize===prize&&revealed){img.hidden=false;$("prizePlaceholder").hidden=true;}};
+ img.onerror=()=>{if(currentPrize===prize&&revealed){img.hidden=true;$("prizePlaceholder").hidden=false;}};
+ img.alt=prize+"色海鲸冰箱贴";img.src=prize+".png";
+ $("draw").hidden=true;$("closeLottery").hidden=false;
+ $("summaryText").textContent="已抽中："+prize+"色海鲸冰箱贴";$("prizeSummary").hidden=false;$("closeLottery").focus();
+}
+$("draw").addEventListener("click",()=>{
+ if(!submitted||revealed||drawing)return;drawing=true;$("draw").disabled=true;$("draw").textContent="正在抽取…";
+ if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){revealPrize();return;}
+ let frame=0;const timer=setInterval(()=>{highlightPrize(frame%prizes.length);frame++;if(frame>=15){clearInterval(timer);revealPrize();}},80);
+});
+$("closeLottery").addEventListener("click",()=>{$("lottery").hidden=true;document.body.classList.remove("lottery-open");$("viewPrize").focus();});
+$("viewPrize").addEventListener("click",showLottery);
+$("lottery").addEventListener("keydown",e=>{
+ if(e.key==="Tab"){e.preventDefault();(revealed?$("closeLottery"):$("draw")).focus();}
+});
 function getRecords(){try{return JSON.parse(localStorage.getItem("my_survey_records")||"[]")}catch(e){return []}}
 function setCount(){$("recordCount").textContent=getRecords().length}
 function csvCell(v){return '"'+String(v??"").replace(/"/g,'""')+'"'}
 $("submit").addEventListener("click",()=>{
- if(!answers.q3){alert("请先选择您喜欢的颜色。");return}
- const record={提交时间:new Date().toLocaleString("zh-CN",{hour12:false}),外观评价:answers.q1,尺寸感受:answers.q2,颜色偏好:answers.q3,合理价格:answers.q4,年龄段:answers.q5,家庭情况:answers.q6,购车计划:answers.q7};
+ if(submitted)return;
+ const missing=keys.find(k=>!answers[k]);
+ if(missing){alert("请先完成第 "+missing.slice(1)+" 题。");const target=document.querySelector('[data-group="'+missing+'"]')||$(missing);if(target){target.closest(".card").scrollIntoView({behavior:"smooth",block:"center"});target.focus({preventScroll:true});}return;}
+ const prize=prizes[Math.floor(Math.random()*prizes.length)];
+ const record={提交时间:new Date().toLocaleString("zh-CN",{hour12:false}),外观评价:answers.q1,尺寸感受:answers.q2,颜色偏好:answers.q3,合理价格:answers.q4,年龄段:answers.q5,家庭情况:answers.q6,购车计划:answers.q7,中奖冰箱贴:prize+"色"};
  const records=getRecords();records.push(record);
  try{localStorage.setItem("my_survey_records",JSON.stringify(records))}
  catch(e){alert("本设备存储空间不足，请先导出已有记录。");return}
- $("survey").style.display="none";$("success").style.display="block";setCount();window.scrollTo({top:0,behavior:"smooth"});
+ submitted=true;currentPrize=prize;revealed=false;
+ $("survey").style.display="none";$("success").style.display="block";setCount();window.scrollTo({top:0,behavior:"smooth"});showLottery();
 });
 $("next").addEventListener("click",()=>{
+ if(!revealed)return;
+ currentPrize=null;submitted=false;revealed=false;drawing=false;$("prizeSummary").hidden=true;$("prizeImage").removeAttribute("src");
  ["q1","q4"].forEach(k=>$(k).value=({q1:3,q4:3})[k]);
  ["q2","q3","q5","q6","q7"].forEach(k=>{
   answers[k]="";
-  document.querySelectorAll("[data-group='"+k+"']").forEach(x=>x.classList.remove("selected"));
+  document.querySelectorAll("[data-group='"+k+"']").forEach(x=>{x.classList.remove("selected");x.setAttribute("aria-pressed","false");});
  });
  update();$("success").style.display="none";$("survey").style.display="block";window.scrollTo({top:0,behavior:"smooth"});
 });
 function download(name,content,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 $("export").addEventListener("click",()=>{
  const r=getRecords();if(!r.length){alert("当前还没有问卷记录。");return}
- const cols=Object.keys(r[0]);const csv="\uFEFF"+[cols.map(csvCell).join(","),...r.map(x=>cols.map(c=>csvCell(x[c])).join(","))].join("\r\n");
+ const cols=[...new Set(r.flatMap(x=>Object.keys(x)))];const csv="\uFEFF"+[cols.map(csvCell).join(","),...r.map(x=>cols.map(c=>csvCell(x[c])).join(","))].join("\r\n");
  download("海鲸MY_广州车展调研_"+new Date().toISOString().slice(0,10)+".csv",csv,"text/csv;charset=utf-8");
 });
 $("backup").addEventListener("click",()=>{const r=getRecords();if(!r.length){alert("当前还没有问卷记录。");return}download("海鲸MY_调研备份.json",JSON.stringify(r,null,2),"application/json")});
