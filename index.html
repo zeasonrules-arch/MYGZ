@@ -56,9 +56,10 @@ input[type=range]:focus-visible{outline:2px solid #8da9bc;outline-offset:3px;bor
 <div class="wrap">
 <header>
   <div class="eyebrow">比亚迪 · 广州车展</div>
-  <h1 class="hero-title">海鲸 MY 用户调研</h1>
-  <div class="hero-sub">从深海生命，驶向星海未来。感谢您走近海鲸，分享对未来家庭出行的真实期待。</div>
-  <div class="ipline"><span class="ipdot"></span> 星海之鲸 · 拥抱万象，逍遥星海</div>
+  <h1 class="hero-title">海鲸广州车展用户调研</h1>
+  <div class="hero-sub">从深海生命，驶向星海未来，</div>
+  <div class="hero-sub">感谢您走近海鲸，分享对未来家庭出行的真实期待。</div>
+  <div class="ipline"><span class="ipdot"></span>游弋星穹浩海，容纳万象天地</div>
 </header>
 <div class="intro">本问卷约需 1–2 分钟。请结合现场实车体验作答，您的反馈将用于海鲸产品市场研究。</div>
 
@@ -148,18 +149,18 @@ input[type=range]:focus-visible{outline:2px solid #8da9bc;outline-offset:3px;bor
   <button class="secondary" id="backup">备份 JSON</button>
  </div>
 </section>
-<div class="footer">星海之鲸 · 海鲸 MY · 广州车展市场调研</div>
+<div class="footer">海鲸 · 广州车展市场调研</div>
 </div>
 <div class="lottery" id="lottery" hidden role="dialog" aria-modal="true" aria-labelledby="lotteryTitle">
  <div class="lottery-panel">
-  <div class="lottery-kicker">星海之鲸 · 车展专属礼遇</div>
+  <div class="lottery-kicker">车展调研专属礼遇</div>
   <h2 id="lotteryTitle">感谢参与，开启惊喜</h2>
-  <p id="lotteryDesc">问卷已成功提交，五款海鲸冰箱贴随机抽取一款。</p>
+  <p id="lotteryDesc">问卷已成功提交，五款海鸥冰箱贴随机抽取一款。</p>
   <div class="prize-stage" id="prizeStage">
    <img id="prizeImage" width="1280" height="750" alt="" hidden>
    <div class="prize-placeholder" id="prizePlaceholder">
     <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="26" width="44" height="29" rx="4"/><rect x="7" y="17" width="50" height="11" rx="3"/><path d="M32 17v38M32 17c-14 0-19-4-16-10 4-7 15 0 16 10Zm0 0c14 0 19-4 16-10-4-7-15 0-16 10Z"/></svg>
-    <strong id="placeholderText">海鲸限定冰箱贴</strong><small id="placeholderNote">五款颜色 · 随机获得</small>
+    <strong id="placeholderText">海鸥限定冰箱贴</strong><small id="placeholderNote">五款颜色 · 随机获得</small>
    </div>
   </div>
   <div class="prize-palette" id="prizePalette" aria-hidden="true"><span style="background:#fff"></span><span style="background:#f2b9cb"></span><span style="background:#80c8e8"></span><span style="background:#84bca3"></span><span style="background:#303942"></span></div>
@@ -212,23 +213,23 @@ function showLottery(){
  $("lottery").hidden=false;document.body.classList.add("lottery-open");
  if(revealed){$("closeLottery").focus();return;}
  $("lotteryTitle").textContent="感谢参与，开启惊喜";
- $("lotteryDesc").textContent="问卷已成功提交，五款海鲸冰箱贴随机抽取一款。";
+ $("lotteryDesc").textContent="问卷已成功提交，五款海鸥冰箱贴随机抽取一款。";
  $("prizeImage").hidden=true;$("prizePlaceholder").hidden=false;
- $("placeholderText").textContent="海鲸限定冰箱贴";$("placeholderNote").textContent="五款颜色 · 随机获得";
+ $("placeholderText").textContent="海鸥限定冰箱贴";$("placeholderNote").textContent="五款颜色 · 随机获得";
  $("draw").hidden=false;$("draw").disabled=false;$("draw").textContent="开启抽奖";$("closeLottery").hidden=true;highlightPrize(-1);$("draw").focus();
 }
 function revealPrize(){
  drawing=false;revealed=true;highlightPrize(prizes.indexOf(currentPrize));
  $("lotteryTitle").textContent="恭喜您，抽中礼品！";
- $("lotteryDesc").textContent="您获得了"+currentPrize+"色海鲸冰箱贴，请向现场工作人员出示本页面。";
- $("placeholderText").textContent=currentPrize+"色海鲸冰箱贴";$("placeholderNote").textContent="图片暂未加载，以现场实物为准";
+ $("lotteryDesc").textContent="您获得了"+currentPrize+"色海鸥冰箱贴，请向现场工作人员出示本页面。";
+ $("placeholderText").textContent=currentPrize+"色海鸥冰箱贴";$("placeholderNote").textContent="图片暂未加载，以现场实物为准";
  const img=$("prizeImage"), prize=currentPrize;
  img.hidden=true;$("prizePlaceholder").hidden=false;
  img.onload=()=>{if(currentPrize===prize&&revealed){img.hidden=false;$("prizePlaceholder").hidden=true;}};
  img.onerror=()=>{if(currentPrize===prize&&revealed){img.hidden=true;$("prizePlaceholder").hidden=false;}};
- img.alt=prize+"色海鲸冰箱贴";img.src=prize+".png";
+ img.alt=prize+"色海鸥冰箱贴";img.src=prize+".png";
  $("draw").hidden=true;$("closeLottery").hidden=false;
- $("summaryText").textContent="已抽中："+prize+"色海鲸冰箱贴";$("prizeSummary").hidden=false;$("closeLottery").focus();
+ $("summaryText").textContent="已抽中："+prize+"色海鸥冰箱贴";$("prizeSummary").hidden=false;$("closeLottery").focus();
 }
 $("draw").addEventListener("click",()=>{
  if(!submitted||revealed||drawing)return;drawing=true;$("draw").disabled=true;$("draw").textContent="正在抽取…";
