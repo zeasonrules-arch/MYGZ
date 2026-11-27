@@ -32,6 +32,7 @@ input[type=range]:focus-visible{outline:2px solid #8da9bc;outline-offset:3px;bor
 .pills{display:grid;grid-template-columns:minmax(0,1fr);gap:9px;margin-top:16px}
 .pill{width:100%;min-height:42px;border:1px solid var(--line);background:#fff;color:#526276;padding:10px 11px;border-radius:999px;font-size:12px;line-height:1.35;cursor:pointer;transition:background .18s,border-color .18s,color .18s;display:flex;align-items:center;justify-content:center;text-align:center}
 .pill.selected{background:#edf2f5;border-color:#8198a9;color:#344b5c;font-weight:650}
+#q2Text{width:100%;min-height:92px;margin:0;padding:12px 13px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;resize:vertical}#q2Text::placeholder{color:#8a98a8}#q2Text:focus-visible{outline:2px solid #8da9bc;outline-offset:2px}
 .colors{display:grid;grid-template-columns:minmax(0,1fr);gap:9px;margin-top:16px}
 .color{width:100%;min-height:48px;border:1px solid var(--line);border-radius:999px;padding:8px 14px;background:white;display:flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;transition:background .18s,border-color .18s,color .18s}
 .swatch{width:25px;height:25px;flex:0 0 25px;border-radius:50%;margin:0;position:relative;overflow:hidden;box-shadow:inset 0 0 0 1px #00000018,0 1px 3px #00000012}
@@ -72,61 +73,70 @@ input[type=range]:focus-visible{outline:2px solid #8da9bc;outline-offset:3px;bor
 </section>
 
 <section class="card">
- <div class="qhead"><div class="num">02</div><div><h2>您对海鲸实车整体尺寸的感受如何？</h2><div class="hint">关注空间需求与日常使用便利性的平衡</div></div></div>
+ <div class="qhead"><div class="num">02</div><div><h2>您对海鲸外观设计有哪些不满意的地方？</h2><div class="hint">可口述，由现场工作人员代为输入</div></div></div>
  <div class="pills" data-options="q2">
-  <button class="pill" data-group="q2" data-index="0">尺寸偏小</button>
-  <button class="pill" data-group="q2" data-index="1">尺寸比较合适</button>
-  <button class="pill" data-group="q2" data-index="2">驾驶时感觉偏大</button>
-  <button class="pill" data-group="q2" data-index="3">停车时感觉偏大</button>
-  <button class="pill" data-group="q2" data-index="4">尺寸明显过大</button>
-  <button class="pill" data-group="q2" data-index="5">没有明显感受</button>
+  <button class="pill" data-group="q2" data-index="0">自行输入填写</button>
+  <textarea id="q2Text" aria-label="外观不满意的地方" placeholder="请填写您对外观不满意的地方" hidden></textarea>
+  <button class="pill" data-group="q2" data-index="1">无明显不满意位置</button>
  </div>
 </section>
 
 <section class="card">
- <div class="qhead"><div class="num">03</div><div><h2>在现场展示的两款颜色中，您更喜欢哪一款？</h2></div></div>
+ <div class="qhead"><div class="num">03</div><div><h2>您对海鲸实车整体尺寸的感受如何？</h2><div class="hint">关注空间需求与日常使用便利性的平衡</div></div></div>
+ <div class="pills" data-options="q3">
+  <button class="pill" data-group="q3" data-index="0">尺寸偏小</button>
+  <button class="pill" data-group="q3" data-index="1">尺寸比较合适</button>
+  <button class="pill" data-group="q3" data-index="2">驾驶时感觉偏大</button>
+  <button class="pill" data-group="q3" data-index="3">停车时感觉偏大</button>
+  <button class="pill" data-group="q3" data-index="4">尺寸明显过大</button>
+  <button class="pill" data-group="q3" data-index="5">没有明显感受</button>
+ </div>
+</section>
+
+<section class="card">
+ <div class="qhead"><div class="num">04</div><div><h2>在现场展示的两款颜色中，您更喜欢哪一款？</h2></div></div>
  <div class="colors">
-  <button class="color" data-group="q3" data-value="琉璃紫"><span class="swatch" style="background:radial-gradient(ellipse at 28% 20%,#a58eae 0%,#80688e 20%,#624b73 43%,#483653 68%,#30243d 100%)"></span><strong>琉璃紫</strong></button>
-  <button class="color" data-group="q3" data-value="鲸辉蓝"><span class="swatch" style="background:radial-gradient(ellipse at 28% 20%,#79a2bb 0%,#477d9e 22%,#285a79 46%,#193f5a 72%,#102b40 100%)"></span><strong>鲸辉蓝</strong></button>
+  <button class="color" data-group="q4" data-value="琉璃紫"><span class="swatch" style="background:radial-gradient(ellipse at 28% 20%,#a58eae 0%,#80688e 20%,#624b73 43%,#483653 68%,#30243d 100%)"></span><strong>琉璃紫</strong></button>
+  <button class="color" data-group="q4" data-value="鲸辉蓝"><span class="swatch" style="background:radial-gradient(ellipse at 28% 20%,#79a2bb 0%,#477d9e 22%,#285a79 46%,#193f5a 72%,#102b40 100%)"></span><strong>鲸辉蓝</strong></button>
  </div>
  <div class="pills">
-  <button class="pill" data-group="q3" data-value="两款都喜欢">两款都喜欢</button>
-  <button class="pill" data-group="q3" data-value="两款都不喜欢">两款都不喜欢</button>
- </div>
-</section>
-
-<section class="card">
- <div class="qhead"><div class="num">04</div><div><h2>您认为海鲸作为一款家用中大型 MPV，合理的整车售价应该是多少？</h2><div class="hint">请按您的直观判断选择，不代表实际售价</div></div></div>
- <div class="value" id="v4" aria-live="polite">24–26万元</div>
- <div class="range-wrap"><div class="range-track"></div><input aria-label="合理售价" id="q4" type="range" min="0" max="8" step="1" value="3"></div>
- <div class="scale price" data-scale="q4"><span>20万<br>以下</span><span>20–22</span><span>22–24</span><span>24–26</span><span>26–28</span><span>28–30</span><span>30–35</span><span>35–40</span><span>40万<br>以上</span></div>
-</section>
-
-<section class="card">
- <div class="qhead"><div class="num">05</div><div><h2>您目前的年龄段是？</h2></div></div>
- <div class="pills">
-  <button class="pill" data-group="q5" data-index="0">18–25岁</button><button class="pill" data-group="q5" data-index="1">26–30岁</button>
-  <button class="pill" data-group="q5" data-index="2">31–35岁</button><button class="pill" data-group="q5" data-index="3">36–40岁</button>
-  <button class="pill" data-group="q5" data-index="4">41–45岁</button><button class="pill" data-group="q5" data-index="5">46–50岁</button>
-  <button class="pill" data-group="q5" data-index="6">50岁以上</button>
+  <button class="pill" data-group="q4" data-value="两款都喜欢">两款都喜欢</button>
+  <button class="pill" data-group="q4" data-value="两款都不喜欢">两款都不喜欢</button>
  </div>
 </section>
 
 <section class="card">
- <div class="qhead"><div class="num">06</div><div><h2>您目前的家庭及用车情况是怎样的？</h2></div></div>
+ <div class="qhead"><div class="num">05</div><div><h2>您认为海鲸作为一款家用中大型 MPV，合理的整车售价应该是多少？</h2><div class="hint">请按您的直观判断选择，不代表实际售价</div></div></div>
+ <div class="value" id="v5" aria-live="polite">24–26万元</div>
+ <div class="range-wrap"><div class="range-track"></div><input aria-label="合理售价" id="q5" type="range" min="0" max="8" step="1" value="3"></div>
+ <div class="scale price" data-scale="q5"><span>20万<br>以下</span><span>20–22</span><span>22–24</span><span>24–26</span><span>26–28</span><span>28–30</span><span>30–35</span><span>35–40</span><span>40万<br>以上</span></div>
+</section>
+
+<section class="card">
+ <div class="qhead"><div class="num">06</div><div><h2>您目前的年龄段是？</h2></div></div>
  <div class="pills">
-  <button class="pill" data-group="q6" data-index="0">单身，主要个人使用</button><button class="pill" data-group="q6" data-index="1">已婚，暂无子女</button>
-  <button class="pill" data-group="q6" data-index="2">已婚，有1名子女</button><button class="pill" data-group="q6" data-index="3">已婚，有2名及以上子女</button>
-  <button class="pill" data-group="q6" data-index="4">与父母共同生活，多人出行</button><button class="pill" data-group="q6" data-index="5">其他</button>
+  <button class="pill" data-group="q6" data-index="0">18–25岁</button><button class="pill" data-group="q6" data-index="1">26–30岁</button>
+  <button class="pill" data-group="q6" data-index="2">31–35岁</button><button class="pill" data-group="q6" data-index="3">36–40岁</button>
+  <button class="pill" data-group="q6" data-index="4">41–45岁</button><button class="pill" data-group="q6" data-index="5">46–50岁</button>
+  <button class="pill" data-group="q6" data-index="6">50岁以上</button>
  </div>
 </section>
 
 <section class="card">
- <div class="qhead"><div class="num">07</div><div><h2>您目前的购车计划及 MPV 消费需求属于哪种情况？</h2></div></div>
+ <div class="qhead"><div class="num">07</div><div><h2>您目前的家庭及用车情况是怎样的？</h2></div></div>
  <div class="pills">
-  <button class="pill" data-group="q7" data-index="0">已有MPV，计划近期换购</button><button class="pill" data-group="q7" data-index="1">轿车/SUV换购MPV</button>
-  <button class="pill" data-group="q7" data-index="2">计划增购MPV</button><button class="pill" data-group="q7" data-index="3">未来1年内购车，车型未定</button>
-  <button class="pill" data-group="q7" data-index="4">未来1–3年有购车计划</button><button class="pill" data-group="q7" data-index="5">暂无计划，仅了解产品</button>
+  <button class="pill" data-group="q7" data-index="0">单身，主要个人使用</button><button class="pill" data-group="q7" data-index="1">已婚，暂无子女</button>
+  <button class="pill" data-group="q7" data-index="2">已婚，有1名子女</button><button class="pill" data-group="q7" data-index="3">已婚，有2名及以上子女</button>
+  <button class="pill" data-group="q7" data-index="4">与父母共同生活，多人出行</button><button class="pill" data-group="q7" data-index="5">其他</button>
+ </div>
+</section>
+
+<section class="card">
+ <div class="qhead"><div class="num">08</div><div><h2>您目前的购车计划及 MPV 消费需求属于哪种情况？</h2></div></div>
+ <div class="pills">
+  <button class="pill" data-group="q8" data-index="0">已有MPV，计划近期换购</button><button class="pill" data-group="q8" data-index="1">轿车/SUV换购MPV</button>
+  <button class="pill" data-group="q8" data-index="2">计划增购MPV</button><button class="pill" data-group="q8" data-index="3">未来1年内购车，车型未定</button>
+  <button class="pill" data-group="q8" data-index="4">未来1–3年有购车计划</button><button class="pill" data-group="q8" data-index="5">暂无计划，仅了解产品</button>
  </div>
 </section>
 
@@ -171,17 +181,18 @@ input[type=range]:focus-visible{outline:2px solid #8da9bc;outline-offset:3px;bor
 <script>
 const labels={
  q1:["非常不喜欢","不太喜欢","一般","比较喜欢","非常喜欢"],
- q2:["尺寸偏小，希望车身更大、获得更充裕的空间","尺寸比较合适，空间与灵活性比较均衡","尺寸偏大，担心日常驾驶不够灵活","尺寸偏大，担心日常停车不方便","尺寸明显过大，影响日常使用","对尺寸没有明显感受"],
- q4:["20万元以下","20–22万元","22–24万元","24–26万元","26–28万元","28–30万元","30–35万元","35–40万元","40万元以上"],
- q5:["18–25岁","26–30岁","31–35岁","36–40岁","41–45岁","46–50岁","50岁以上"],
- q6:["单身，主要个人使用","已婚，暂无子女","已婚，有1名子女","已婚，有2名及以上子女","与父母共同生活，有多人出行需求","其他"],
- q7:["已有MPV，计划近期换购","目前驾驶轿车/SUV，计划换购MPV","目前驾驶轿车/SUV，有增购MPV计划","未来1年内有购车计划，但车型尚未确定","未来1–3年有购车计划","暂无购车计划，仅了解产品"]
+ q2:["自行输入填写","无明显不满意位置"],
+ q3:["尺寸偏小，希望车身更大、获得更充裕的空间","尺寸比较合适，空间与灵活性比较均衡","尺寸偏大，担心日常驾驶不够灵活","尺寸偏大，担心日常停车不方便","尺寸明显过大，影响日常使用","对尺寸没有明显感受"],
+ q5:["20万元以下","20–22万元","22–24万元","24–26万元","26–28万元","28–30万元","30–35万元","35–40万元","40万元以上"],
+ q6:["18–25岁","26–30岁","31–35岁","36–40岁","41–45岁","46–50岁","50岁以上"],
+ q7:["单身，主要个人使用","已婚，暂无子女","已婚，有1名子女","已婚，有2名及以上子女","与父母共同生活，有多人出行需求","其他"],
+ q8:["已有MPV，计划近期换购","目前驾驶轿车/SUV，计划换购MPV","目前驾驶轿车/SUV，有增购MPV计划","未来1年内有购车计划，但车型尚未确定","未来1–3年有购车计划","暂无购车计划，仅了解产品"]
 };
-const keys=["q1","q2","q3","q4","q5","q6","q7"];
-const answers={q3:""};
+const keys=["q1","q2","q3","q4","q5","q6","q7","q8"];
+const answers={q4:""};
 const $=id=>document.getElementById(id);
 function update(){
- ["q1","q4"].forEach(k=>{
+ ["q1","q5"].forEach(k=>{
   const input=$(k), value=Number(input.value), min=Number(input.min), max=Number(input.max), index=value-min;
   answers[k]=labels[k][index];
   $("v"+k.slice(1)).textContent=k==="q1"?value+" · "+answers[k]:answers[k];
@@ -190,7 +201,7 @@ function update(){
   document.querySelectorAll('[data-scale="'+k+'"] span').forEach((mark,i)=>mark.classList.toggle("active",i===index));
  });
 }
-["q1","q4"].forEach(k=>{
+["q1","q5"].forEach(k=>{
  $(k).addEventListener("input",update);
  const marks=[...document.querySelectorAll('[data-scale="'+k+'"] span')];
  marks.forEach((mark,i)=>{
@@ -202,7 +213,12 @@ document.querySelectorAll("[data-group]").forEach(b=>{
  b.setAttribute("aria-pressed","false");
  b.addEventListener("click",()=>{
   const group=b.dataset.group;
-  answers[group]=group==="q3"?b.dataset.value:labels[group][Number(b.dataset.index)];
+  answers[group]=group==="q4"?b.dataset.value:labels[group][Number(b.dataset.index)];
+  if(group==="q2"){
+   const text=$("q2Text"), manual=b.dataset.index==="0";
+   text.hidden=!manual;
+   if(manual){text.focus();}else{text.value="";}
+  }
   document.querySelectorAll("[data-group='"+group+"']").forEach(x=>{x.classList.toggle("selected",x===b);x.setAttribute("aria-pressed",String(x===b));});
  });
 });
@@ -246,10 +262,10 @@ function setCount(){$("recordCount").textContent=getRecords().length}
 function csvCell(v){return '"'+String(v??"").replace(/"/g,'""')+'"'}
 $("submit").addEventListener("click",()=>{
  if(submitted)return;
- const missing=keys.find(k=>!answers[k]);
+ const missing=keys.find(k=>!answers[k]||(k==="q2"&&answers[k]===labels.q2[0]&&!$("q2Text").value.trim()));
  if(missing){alert("请先完成第 "+missing.slice(1)+" 题。");const target=document.querySelector('[data-group="'+missing+'"]')||$(missing);if(target){target.closest(".card").scrollIntoView({behavior:"smooth",block:"center"});target.focus({preventScroll:true});}return;}
  const prize=prizes[Math.floor(Math.random()*prizes.length)];
- const record={提交时间:new Date().toLocaleString("zh-CN",{hour12:false}),外观评价:answers.q1,尺寸感受:answers.q2,颜色偏好:answers.q3,合理价格:answers.q4,年龄段:answers.q5,家庭情况:answers.q6,购车计划:answers.q7,中奖冰箱贴:prize+"色"};
+ const record={提交时间:new Date().toLocaleString("zh-CN",{hour12:false}),外观评价:answers.q1,外观不满意位置:answers.q2===labels.q2[0]?$("q2Text").value.trim():answers.q2,尺寸感受:answers.q3,颜色偏好:answers.q4,合理价格:answers.q5,年龄段:answers.q6,家庭情况:answers.q7,购车计划:answers.q8,中奖冰箱贴:prize+"色"};
  const records=getRecords();records.push(record);
  try{localStorage.setItem("my_survey_records",JSON.stringify(records))}
  catch(e){alert("本设备存储空间不足，请先导出已有记录。");return}
@@ -259,8 +275,9 @@ $("submit").addEventListener("click",()=>{
 $("next").addEventListener("click",()=>{
  if(!revealed)return;
  currentPrize=null;submitted=false;revealed=false;drawing=false;$("prizeSummary").hidden=true;$("prizeImage").removeAttribute("src");
- ["q1","q4"].forEach(k=>$(k).value=({q1:3,q4:3})[k]);
- ["q2","q3","q5","q6","q7"].forEach(k=>{
+ ["q1","q5"].forEach(k=>$(k).value=({q1:3,q5:3})[k]);
+ $("q2Text").value="";$("q2Text").hidden=true;
+ ["q2","q3","q4","q6","q7","q8"].forEach(k=>{
   answers[k]="";
   document.querySelectorAll("[data-group='"+k+"']").forEach(x=>{x.classList.remove("selected");x.setAttribute("aria-pressed","false");});
  });
@@ -269,7 +286,7 @@ $("next").addEventListener("click",()=>{
 function download(name,content,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 $("export").addEventListener("click",()=>{
  const r=getRecords();if(!r.length){alert("当前还没有问卷记录。");return}
- const cols=[...new Set(r.flatMap(x=>Object.keys(x)))];const csv="\uFEFF"+[cols.map(csvCell).join(","),...r.map(x=>cols.map(c=>csvCell(x[c])).join(","))].join("\r\n");
+ const cols=[...new Set(r.flatMap(x=>Object.keys(x)))];if(cols.includes("外观不满意位置")){cols.splice(cols.indexOf("外观不满意位置"),1);cols.splice(cols.indexOf("外观评价")+1,0,"外观不满意位置");}const csv="\uFEFF"+[cols.map(csvCell).join(","),...r.map(x=>cols.map(c=>csvCell(x[c])).join(","))].join("\r\n");
  download("海鲸MY_广州车展调研_"+new Date().toISOString().slice(0,10)+".csv",csv,"text/csv;charset=utf-8");
 });
 $("backup").addEventListener("click",()=>{const r=getRecords();if(!r.length){alert("当前还没有问卷记录。");return}download("海鲸MY_调研备份.json",JSON.stringify(r,null,2),"application/json")});
